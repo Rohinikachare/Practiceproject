@@ -1,0 +1,296 @@
+NAME:KACHARE ROHINI SAKHARAM.
+
+
+
+
+
+AUTOREGISTRYPRO
+
+
+
+package com.model;
+
+public class Vehicle {
+	public int regId;
+	public String ownerName;
+	public String modelName;
+	public int price;
+	public String colour;
+	public long adharNo;
+	public long mobno;
+	public String City;
+	
+	
+	
+	public Vehicle( int regId, String ownerName ,String modelName,int price,String colour,long adharNo,long mobno,String City)
+	
+	{
+		this.regId=regId;
+		this.ownerName=ownerName;
+		this.modelName=modelName;
+		this.price=price;
+		this.colour=colour;
+		this.adharNo=adharNo;
+		this.mobno=mobno;
+		this. City= City;
+		
+	}
+	
+}
+
+
+****************************************************************************************************************************************************************************************
+**************************************************************************************************************************************************************************************
+
+
+package com.service;
+import java.util.Scanner;
+import com.model.Vehicle;
+
+
+public class Rto {
+
+	Scanner s=new Scanner (System.in);
+	
+	public Vehicle regVehicle()
+	{
+		System.out.println("Enter registration ID:");
+		int rg=s.nextInt();
+		System.out.println("Enter owner name:");
+		String owNm=s.next()+s.nextLine();
+		System.out.println("Enter model name:");
+		String mdNm=s.next()+s.nextLine();
+		System.out.println("Enter price:");
+		int pr=s.nextInt();
+		System.out.println("Enter colour:");
+		String clr=s.next()+s.nextLine();
+		System.out.println("Enter your aadhar no:");
+		long adNo=s.nextLong();
+		System.out.println("Enter your mobile no");
+		long mob=s.nextLong();
+		System.out.println("Enter your city:");
+		String ct=s.next()+s.nextLine();
+		Vehicle v1=new Vehicle(rg,owNm,mdNm,pr,clr,adNo,mob,ct);
+		return v1;
+		
+	}
+	
+	public void ViewDetails(Vehicle v)
+	{
+		System.out.println("``````````````````````````````YOUE DETAILS````````````````````");
+		System.out.println("Registration ID:" +v.regId);
+		System.out.println("Owner Name:"+v.ownerName);
+		System.out.println("ModelName:"+v.modelName);
+		System.out.println("Price:"+v.price);
+		System.out.println("Colour:"+v.colour);
+		System.out.println("Aadhar No"+v.adharNo);
+		System.out.println("Mobile No:"+v.mobno);
+		System.out.println("City:"+v.City);
+	}
+	public Vehicle updateDetails(Vehicle v)
+	{
+		System.out.println("1.Update regId\n2.Update Owner Name\n3.Update Model Name\n4.Update price\n5.Update Colour\n 6.Update AadharNo\n 7.Update MobNo\n 8.Update City");
+		System.out.println("Enter your choice:");
+		int ch=s.nextInt();
+		
+		switch(ch)
+		{
+		
+		case 1:
+			System.out.println("Enter Your Ne RegID:");
+			v.regId=s.nextInt();
+			break;
+			
+		case 2:
+			System.out.println("Enter New Owner Name:");
+			v.ownerName=s.next()+s.nextLine();
+			break;
+			
+		case 3:
+			System.out.println("Enter New model Name:");
+		 v.modelName=s.next()+s.nextLine();
+			break;
+			
+		case 4:
+			System.out.println("Enter New Price:");
+			v.price=s.nextInt();
+			break;
+			
+		case 5:
+			System.out.println("Enter New Colour");
+			v.colour =s.next()+s.nextLine();
+			break;
+			
+		case 6:
+			System.out.println("Enter New AadharNo:");
+			v.adharNo=s.nextLong();
+			break;
+			
+		case 7:
+			System.out.println("Enter New MobNo:");
+			v.mobno=s.nextLong();
+			break;
+			
+		case 8:
+			System.out.println("Enter New City Name:");
+			v.City=s.next()+s.nextLine();
+			break;
+			
+		default:
+			System.out.println("Invalid Choice..:");
+		
+			break;
+			
+			
+		}
+		return v;
+		
+
+	}
+
+}
+
+
+*****************************************************************************************************************************************************************************************
+*************************************************************************************************************************************************************************************
+
+package com.client;
+import java.util.Scanner;
+
+import com.model.Vehicle;
+import com.service.Rto;
+
+public class Test {
+
+	public static void main(String[] args) {
+		Scanner s=new Scanner(System.in);
+		Rto pune=new Rto();
+		Vehicle v=null;
+		
+		
+		while(true)
+		{
+			System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Welcome to Autoregistry~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			System.out.println("1.Register your vehicle\n2.View details\n3.Update details\n4.Exite");
+			System.out.println("Enter your choice");
+			int ch=s.nextInt();
+			
+			
+			
+			switch(ch)
+			{
+				case 1:
+					v=pune.regVehicle();
+					System.out.println("Registration Successfull............");
+					break;
+				case 2:
+					pune.ViewDetails(v);
+					break;
+				case 3:
+					v=pune.updateDetails(v);
+					System.out.println("Update Successfull............");
+					break;
+				case 4:
+					
+					System.out.println("Exited");
+					System.exit(0);
+					break;
+					
+					default:
+						System.out.println("Invalid choice");
+					break;	
+			}
+		}
+
+	}
+
+}
+
+
+********************************************************************************************************************************************************************************************
+*****************************************************************************************************************************
+OUTPUT:
+~~~~~~~~~~Welcome to Autoregistry~~~~~~~~~~~~~~
+1.Register your vehicle
+2.View details
+3.Update details
+4.Exite
+Enter your choice
+1
+Enter registration ID:
+107
+Enter owner name:
+jayraj
+Enter model name:
+thar
+Enter price:
+3000000
+Enter colour:
+black
+Enter your aadhar no:
+12345678
+Enter your mobile no
+9356191209
+Enter your city:
+pune
+Registration Successfull............
+~~~~~~~~~~Welcome to Autoregistry~~~~~~~~~~~~~~
+1.Register your vehicle
+2.View details
+3.Update details
+4.Exite
+Enter your choice
+2
+``````````````````````````````YOUE DETAILS````````````````````
+Registration ID:107
+Owner Name:jayraj
+ModelName:scorpio
+Price:3000000
+Colour:black
+Aadhar No12345678
+Mobile No:9356191209
+City:pune
+~~~~~~~~~~Welcome to Autoregistry~~~~~~~~~~~~~~
+1.Register your vehicle
+2.View details
+3.Update details
+4.Exite
+Enter your choice
+3
+1.Update regId
+2.Update Owner Name
+3.Update Model Name
+4.Update price
+5.Update Colour
+ 6.Update AadharNo
+ 7.Update MobNo
+ 8.Update City
+Enter your choice: 7020252433
+1
+Enter Your Ne RegID:
+105
+Update Successfull............
+~~~~~~~~~~Welcome to Autoregistry~~~~~~~~~~~~~~
+1.Register your vehicle
+2.View details
+3.Update details
+4.Exite
+Enter your choice
+2
+``````````````````````````````YOUE DETAILS````````````````````
+Registration ID:105
+Owner Name:jayraj
+ModelName:thar
+Price:3000000
+Colour:black
+Aadhar No12345678
+Mobile No:9356191209
+City:pune
+~~~~~~~~~~Welcome to Autoregistry~~~~~~~~~~~~~~
+1.Register your vehicle
+2.View details
+3.Update details
+4.Exite
+Enter your choice
+4
+Exited

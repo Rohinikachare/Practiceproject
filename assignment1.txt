@@ -1,0 +1,651 @@
+Theory:
+
+Q1.What is java?Features of java?
+Ans:
+Java is a programming language and a platform. Java is a high level, robust, object-oriented and secure programming language.
+Java was developed by Sun Microsystems (which is now the subsidiary of Oracle) in the year 1995. James Gosling is known as the
+father of Java. Before Java, its name was Oak. Since Oak was already a registered company, so James Gosling and his team changed
+the name from Oak to Java.Platform: Any hardware or software environment in which a program runs, is known as a platform. Since 
+Java has a runtime environment (JRE) and API, it is called a platform.
+
+Features:
+Simple and Easy to Learn. Java is easy to learn and simple to use as a programming language
+Object-Oriented Programming
+Platform Independence
+Automatic Memory Management
+Security
+Rich API
+Multithreading
+High Performance
+
+
+ Q2.Datatypes in Java?[Explain types, DefaultValues, Scope]
+Ans: 
+In java data types are divided into categories : primitive data types and non-primitive data types also known as reference data types.
+Primitive Data Types : Primitive data types are predefined by the language itself.
+Primitive data types are the most basic data types available in java. There are eight primitive data types, each with a fixed size and a 
+default value.
+
+Types : 
+1. Byte: The byte data type is an 8-bit signed two’s complement integer.
+Default value of the byte data type is 0. Scope of the byte data type  -128 to 127.
+2. Short: The short data type is a 16-bit signed two’s complement integer. 
+Default value of the Short data type is 0. Scope of the Short data type -32,768 to 32,767.
+3. Int: The int data type  is a 32-bit signed two’s complement integer.Default value of the int data type is 0. Scope of the int data type .
+4. Long: The long data type is a 64-bit two’s complement integer. Default value of the long type is 0. Scope of the long data type -9,223,372,
+036,854,775,808 
+to 9,223,372,036,854,775,807.
+
+
+Q3. Why is Java Platform Independent? 
+Ans: 
+In Java, the main point here is that the JVM depends on the operating system – so if you are running Mac OS X you will have a different JVM than if you are 
+running Windows or some other operating system. This fact can be verified by trying to download the JVM for your particular machine – when trying to download 
+it, you will be given a list of JVMs corresponding to different operating systems, and you will obviously pick whichever JVM is targeted for the operating system 
+that you are running. So we can conclude that JVM is platform-dependent and it is the reason why Java is able to become “Platform Independent”.
+Because we can write java code in one system run on another system. Java does not compile into machine code, it compiles into byte code and it will run or interpreted
+using JVM( java virtual machine). Which makes java platform independent.
+
+Q4. What is the difference between local and global variables?[Any 5]
+
+Local variables:
+1]are declared within a specific block of code, such as within a function or a loop.
+2]They are only accessible within the block in which they are declared.
+3]Once the block of code in which they are declared exits, the memory allocated to these variables is released, and they are no longer accessible.
+4]Local variables can have the same name as variables in other blocks without conflict because their scope is limited to the block in which they are declared.
+5]They are typically used for temporary storage or only relevant data within a specific context.
+
+Global variable:
+1]Global variables are declared outside of any function or block of code, usually at the top of a program or in a separate file.
+2]They are accessible from any part of the program, including within functions, loops, or other blocks of code.
+3]Global variables retain their value throughout the lifetime of the program unless explicitly modified or reset.
+4]Due to their accessibility from anywhere in the program, global variables can introduce unintended side effects and make it harder to understand and debug code, 
+especially in larger programs.
+5]They are typically used for values that need to be accessed and modified by multiple parts of the program.
+
+
+Q5. What is Constructor? The use of Constructor? Types of Constructor?
+Ans:
+In Java, a Constructor is a block of codes similar to the method. It is called when an instance of the class is created. At the time of calling the constructor, 
+memory for the object is allocated in the memory. It is a special type of method that is used to initialize the object. Every time an object is created using the 
+new()keyword, at least one constructor is called.
+
+TYPES: In java,There are three types of constructor : Default constructor, Parameterized Constructor, Non-parameterized Constructor.
+
+
+1) Default Constructor:- Whenever our Java program has no any constructor then compiler put their own constructor is called Default Constructor.
+ 2) parameterised Constructor:- Consturctor with agruments is called Parameterised Constructor,allowing for more flexible and controlled object initialization.
+
+
+  3) Non-Parameterised Consrtuctor:- Constructor with no arguments is called Non-Parameterised Constructor. It is used to initialize objects with default values. 
+
+
+Q6. Suppose a class has only a parameterized constructor and while creating an object I call a non parameterized :one so is it possible?[Give Reason for your answer] 
+Ans: 
+No, it is not possible. If a class has only a parameterized constructor and you try to create an object using a non-parameterized constructor, it will result in a compilation 
+error. This happens because Java does not provide a default constructor when any constructor is explicitly defined. To allow creating an object without arguments, you must explicitly define a non-parameterized constructor in addition to the parameterized one. Without the explicit non-parameterized constructor, the compiler cannot find a matching constructor for new ClassName() , causing an error.
+
+
+
+
+Q7. When we create an object the constructor gets called, but what if we have not created the constructor will it get called to?[Give Reason for your answer]
+Ans: 
+Yes, it will still get called. If no constructor is explicitly defined in a class, Java automatically provides a default no-argument constructor. This default constructor initializes the object's fields to their default values . When you create an object using a new classname , this implicit default constructor is called. This ensures that every class can be instantiated even if no constructor is explicitly provided.
+
+
+     Practical:
+
+1. Create a class for GST calculator with the method that calculates the gst of a product:
+
+package test;
+public class GSTCalculator {
+        public double GSTcal(double productPrice, double gstRate)
+        {
+                return productPrice*gstRate/100;
+        }
+        public double totalCal(double productPrice,double gstRate)
+        {
+                double gstAmount = GSTcal(productPrice,gstRate);
+                return productPrice + gstAmount;                
+        }
+        public static void main(String[] args) {
+                GSTCalculator  cal= new GSTCalculator();
+                double productPrice = 2000;
+                double gstRate = 18.0;
+                
+                double gstAmount = cal.GSTcal(productPrice, gstRate);
+                double totalCal = cal.totalCal(productPrice, gstRate);
+                System.out.println("productPrice: "+productPrice);
+                System.out.println("GST Amount: "+gstAmount);
+                System.out.println("Total price :"+totalCal);
+                                
+        }
+        
+}
+
+
+OUTPUT:
+productPrice: 2000.0
+GST Amount: 360.0
+Total price :2360.0
+
+
+2. Create a class discount with a discount method to calculate a discount given on a particular price :
+package test;
+public class DiscountCal {
+        public double disCal(double actualPrice, double discountRate)
+        {
+                return actualPrice*discountRate/100;
+        }
+        public double totalCal(double actualPrice,double discountRate)
+        {
+                double discountAmount = disCal(actualPrice,discountRate);
+                return actualPrice - discountAmount;                
+        }
+        public static void main(String[] args) {
+                DiscountCal  cal= new DiscountCal();
+                double actualPrice = 2000;
+                double discountRate = 5.0;
+                
+                double discountAmount = cal.disCal(actualPrice, discountRate);
+                double totalCal = cal.totalCal(actualPrice, discountRate);
+                System.out.println("actualPrice: "+actualPrice);
+                System.out.println("Discount Amount: "+discountAmount);
+                System.out.println("Total price :"+totalCal);
+                                
+        }
+}
+
+
+OUTPUT:
+actualPrice: 2000.0
+Discount Amount: 100.0
+Total price :1900.0
+
+
+3. Create the class Employee create a method printDetails init and call them in main method [ Details Like Id Name Addr Email Contact MaritialStatus Gender Department CompanyName]:
+ 				
+		package assignment;
+
+public class employee {
+	 int id;
+	String name;
+	String addr;
+	String email;
+	long contact;
+	String maritialstatus;
+	String gender;
+	String department;
+	String companyname;
+	
+	public void printdetails(int id,String name,String addr,String email,long contact,
+	String maritialstatus,String gender,String department,String companyname) {
+		this.id=id;
+	    this.name=name;
+	    this.addr=addr;
+	    this.email=email;
+	    this.contact=contact;
+	    this. maritialstatus= maritialstatus;
+	    this.gender=gender;
+	    this.gender=gender;
+	    this.department=department;
+	    this.companyname=companyname;
+		
+	}
+		
+		
+	public static void main(String[] args) {
+		employee e1=new employee();
+		e1.printdetails(101, "jack", "near powle bdrige pune", "jack@abc",1234567, "notmarride", "male","cse", "addor");
+		System.out.println("Id:"+e1.id);
+		System.out.println("name:"+e1.name);
+		System.out.println("addr:"+e1.addr);
+		System.out.println("email:"+e1.email);
+		System.out.println("contact:"+e1.contact);
+		System.out.println("maritialstatus:"+e1.maritialstatus);
+		System.out.println("gender:"+e1.gender);
+		System.out.println("department:"+e1.department);
+		System.out.println("companyname:"+e1.companyname);
+	}
+		
+}
+
+OUTPUT:
+Id:101
+name:jack
+addr:near powle bdrige pune
+email:jack@abc
+contact:1234567
+maritialstatus:notmarride
+gender:male
+department:cse
+companyname:addor
+
+4. Create a class Student create a method studentDetails in it and call them in main method [ Details Like Id Name Addr Email Contact Gender Class CollegeName UniversityName] :
+package assignment;
+
+public class student {
+	int id;
+	String name;
+	String addr;
+	String email;
+	long contact;
+	String gender;
+	String div;
+	String collegename;
+	String universityname;
+	
+	
+	public void studentdetails(int id,String name,String addr,String email,long contact,String gender,String div,
+	String collegename,String universityname) {
+		this.id=id;
+		this.name=name;
+		this.addr=addr;
+		this.email=email;
+		this.contact=contact;
+		this. gender=gender;
+		this. div=div;
+		this. collegename=collegename;
+		this.universityname=universityname;
+		
+		
+	}
+
+	public static void main(String[] args) {
+		student s1=new student();
+		s1.studentdetails(101,"rohini","near powle bridge at pune","rohi@kac",1234567890,"female","a","dacoe","shivaji");
+		
+		System.out.println("Id:"+s1.id);
+		System.out.println("name:"+s1.name);
+		System.out.println("addr:"+s1.addr);
+		System.out.println("email:"+s1.email);
+		System.out.println("contact:"+s1.contact);
+		System.out.println("gender:"+s1.gender);
+		System.out.println("div:"+s1.div);
+		System.out.println("collegename:"+s1.collegename);
+		System.out.println("universityname:"+s1.universityname);
+		
+		}
+		
+	}
+
+
+OUTPUT:
+Id:101
+name:rohini
+addr:near powle bridge at pune
+email:rohi@kac
+contact:1234567890
+gender:female
+div:a
+collegename:dacoe
+universityname:shivaji 
+
+
+
+5. Create a class Address and create a method for printAddress and call them in the main method 
+[ Details Like AreaName NeighbourhoodName Landmark District State Country PinCode]:
+package assignment;
+
+public class address {
+	String areaname;
+	String neighbourhoodname;
+	String landmark;
+	String district;
+	String state;
+	String country;
+	int pincode;
+	
+	
+	public void printaddress(String areaname,String neighbourhoodname,String landmark,String district,String state,String country,
+	int pincode) {
+		this.areaname=areaname;
+		this.neighbourhoodname=neighbourhoodname;
+		this.neighbourhoodname=neighbourhoodname;
+        this.landmark=landmark;
+        this.district=district;
+        this.state=state;
+        this.country=country;
+        this.pincode=pincode;
+		
+		
+	}
+	
+
+	public static void main(String[] args) {
+		address a1=new address();
+		a1.printaddress("laxminagar", "kachare","the statue of liberty","satara","maharastra","india",415106);
+		System.out.println("areaname:"+a1.areaname);
+		System.out.println("landmark:"+a1.landmark);
+		System.out.println("district:"+a1.district);
+		System.out.println("state:"+a1.state);
+		System.out.println("country:"+a1.country);
+		System.out.println("pincode:"+a1.pincode);
+		
+		
+	
+
+	}
+
+}
+OUTPUT:
+areaname:laxminagar
+landmark:the statue of liberty
+district:satara
+state:maharastra
+country:india
+pincode:415106
+
+
+
+
+6. Create a class College and create methods like comDepartment civDepartment and mechDepartmentwith their details and call them in main method
+ [ Details Like HOD NoofTeachers NoofClassroomsNoofStudents onFloor CurrentYearTopper] for all the methods:
+
+package test;
+
+public class collage {
+	public void comDepartment()
+    {
+            String HOD = "kakde sp";
+            int noOfTeacher = 12;
+            int noOfClassRoom = 10;
+            int noOfStudent= 200;
+            String currentYearTopper = "digvijat rathe";
+            
+            System.out.println("Computer Science Department");
+            System.out.println("HOD :"+HOD);
+            System.out.println("Number of Teacher :"+noOfTeacher);
+            System.out.println("Number of ClassRoom :"+noOfClassRoom);
+            System.out.println("Number of Student :"+noOfStudent);
+            System.out.println("Current Year Topper :"+currentYearTopper);
+    }
+    public void civDepartment()
+    {
+            String HOD = "kadve ar";
+            int noOfTeacher = 14;
+            int noOfClassRoom = 10;
+            int noOfStudent= 400;
+            String currentYearTopper = "akriti negi";
+            
+            System.out.println("Civil Department");
+            System.out.println("HOD :"+HOD);
+            System.out.println("Number of Teacher :"+noOfTeacher);
+            System.out.println("Number of ClassRoom :"+noOfClassRoom);
+            System.out.println("Number of Student :"+noOfStudent);
+            System.out.println("Current Year Topper :"+currentYearTopper);
+    }
+    public void mechDepartment()
+    {
+            String HOD = "Kumbhar Sir";
+            int noOfTeacher = 9;
+            int noOfClassRoom = 14;
+            int noOfStudent= 300;
+            String currentYearTopper = "unnati tomar";
+            
+            System.out.println("Mechanical Department");
+            System.out.println("HOD :"+HOD);
+            System.out.println("Number of Teacher :"+noOfTeacher);
+            System.out.println("Number of ClassRoom :"+noOfClassRoom);
+            System.out.println("Number of Student :"+noOfStudent);
+            System.out.println("Current Year Topper :"+currentYearTopper);
+    }
+    
+   public static void main(String[] args) {
+                
+         collage col = new  collage();
+                col.comDepartment();
+                col.civDepartment();
+                col.mechDepartment();
+        }
+}
+     
+OUTPUT:     
+     
+
+Computer Science Department
+HOD :kakde sp
+Number of Teacher :12
+Number of ClassRoom :10
+Number of Student :200
+Current Year Topper :digvijat rathe
+Civil Department
+HOD :kadve ar
+Number of Teacher :14
+Number of ClassRoom :10
+Number of Student :400
+Current Year Topper :akriti negi
+Mechanical Department
+HOD :Kumbhar Sir
+Number of Teacher :9
+Number of ClassRoom :14
+Number of Student :300
+Current Year Topper :unnati tomar
+
+7. Create class Addition, Subtraction, Multiplication and Division and create methods for addition ,subtraction ,multiplication and division repectively in those classes and call them in main method:
+
+
+package test;
+class Addition
+{
+        public int add(int a, int b)
+        {
+                return a+b;
+        }
+}
+class Substraction
+{
+        public int sub(int a, int b)
+        {
+                return a-b;
+        }
+}
+class Multiplication
+{
+        public int mul(int a, int b)
+        {
+                return a*b;
+        }
+}
+class Division
+{
+        public int div(int a, int b)
+        {
+                return a/b;
+        }
+}
+public class main {
+        public static void main(String[] args) {
+                Addition addition = new Addition();
+                Substraction substraction = new Substraction();
+                Multiplication multiplication = new Multiplication();
+                Division division =new Division();
+                
+                int a= 10;
+                int b= 20;
+                
+                System.out.println("ADDITION :"+addition.add(a , b));
+                System.out.println("SUBTRACTION :"+substraction.sub(a, b));
+                System.out.println("MULTIPLICATION :"+multiplication.mul(a, b));
+                System.out.println("DIVISION :"+division.div(a, b));
+        
+        }
+}
+OUTPUT:
+ADDITION :30
+SUBTRACTION :-10
+MULTIPLICATION :200
+DIVISION :0
+
+
+8.Create Advanced Calculator class with methods like mod, mean, square and cube in the class and call the methods along with the addition subtraction multiplication and division methods .
+
+
+package test;
+public class AdvancedCalculator {
+        public int add(int a,int b)
+        {
+                return a+b;
+        }
+        public int sub(int a,int b)
+        {
+                return a-b;
+        }
+        public int mul(int a, int b)
+        {
+                return a*b;
+        }
+        public int div(int a,int b)
+        {
+                return a/b;
+        }
+        public int mod(int a, int b)
+        {
+                return a%b;
+        }
+        public double mean(int[] numbers)
+        {
+                int sum=0;
+                for (int number : numbers) {
+                sum += number;
+                }
+                return (double) sum/numbers.length;
+        }
+        public int square(int a)
+        {
+                return a*a;
+        }
+        public int cube(int a)
+        {
+                return a*a*a;
+        }
+        public static void main(String[] args) {
+        AdvancedCalculator calculator = new AdvancedCalculator();
+        int a=10;
+        int b=20;
+        int[] numbers= {1,2,3,4,5};
+        
+        System.out.println("ADDITION IS :"+calculator.add(a,b));
+        System.out.println("SUBTRACTION IS :"+calculator.sub(a, b));
+        System.out.println("MULTIPLICATION IS :"+calculator.mul(a, b));
+        System.out.println("DIVISION IS "+calculator.div(a, b));
+        System.out.println("MODULUS IS :"+calculator.mod(a, b));
+        System.out.println("MEAN IS :"+calculator.mean(numbers));
+        System.out.println("SQUARE IS :"+calculator.square(a));
+        System.out.println("CUBE IS :"+calculator.cube(a));
+        }
+}
+OUTPUT:
+ADDITION IS :30
+SUBTRACTION IS :-10
+MULTIPLICATION IS :200
+DIVISION IS 0
+MODULUS IS :10
+MEAN IS :3.0
+SQUARE IS :100
+CUBE IS :1000
+
+
+
+
+9. Create a Class Employee with the below attributes. Create the setDetails and getDetails method. Inside the main method call the setDetails and getDetails method to set the attributes. 
+[Eid,Ename,Eaddr,Econtact,Eemail,Cname,Caddr] [setDetails method should be return type set the attributes of Employee class in it] [getDetails method should be parameterized print the attributes of Employee class in it] .
+
+
+package test;
+public class Employee1 {
+        int eid;
+        String ename,eaddr,econtact,eemail,comName,comAddr;
+        public Employee1 setDetail()
+        {
+                Employee1 e1 = new Employee1();
+                e1.eid=101;
+                e1.ename="Deekila";
+                e1.eaddr="japan";
+                e1.econtact="123456789";
+                e1.eemail="deekila@gmail.com";
+                e1.comName="Wipro";
+                e1.comAddr="Mumbai";
+                return e1;
+        }
+        public void getDetail(Employee1 emp)
+        {
+                System.out.println("Employee id :"+emp.eid);
+                System.out.println("Employee Name :"+emp.ename);
+                System.out.println("Employee address :"+emp.eaddr);
+                System.out.println("Employee Contact :"+emp.econtact);
+                System.out.println("Employee email :"+emp.eemail);
+                System.out.println("Company Name :"+emp.comName);
+                System.out.println("Company Address :"+emp.comAddr);
+                
+        }
+        public static void main(String[] args) {
+                Employee1 emp2 = new Employee1();
+                Employee1 emp = emp2.setDetail();
+                emp.getDetail(emp);
+        }
+}
+
+
+OUTPUT:
+Employee id :101
+Employee Name :Deekila
+Employee address :japan
+Employee Contact :123456789
+Employee email :deekila@gmail.com
+Company Name :Wipro
+Company Address :Mumbai
+
+
+10. Create a Class Student with the below attributes. CreateClass Details with the setDetails and getDetails method in it. Inside the main method call the setDetails andgetDetailsmethod to set the attributes. [RollNo,Sname,Saddr,Scontact,Semail,SchName, SchAddr] [setDetails method should be return type set the attributes of Employee class in it] [getDetails method should be parameterized print the attributes of Employee class in it].
+
+
+package test;
+public class Student {
+                int RollNo;
+                String Sname,Saddr,Scontact,Semail,SchName,SchAddr;
+                public Student setDetail()
+                {
+                        Student s1 = new Student();
+                        s1.RollNo=23;
+                        s1.Sname="jayraj";
+                        s1.Saddr="Vita";
+                        s1.Scontact="123456789";
+                        s1.Semail="jayraj@gmail.com";
+                        s1.SchName="new english school";
+                        s1.SchAddr="pune";
+                        return s1;
+                }
+                public void getDetail(Student stu)
+                {
+                        System.out.println("Student  id :"+stu.RollNo);
+                        System.out.println("Student Name :"+stu.Sname);
+                        System.out.println("Student address :"+stu.Saddr);
+                        System.out.println("Student Contact :"+stu.Scontact);
+                        System.out.println("Student email :"+stu.Semail);
+                        System.out.println("School Name :"+stu.SchName);
+                        System.out.println("School Address :"+stu.SchAddr);
+                        
+                }
+                public static void main(String[] args) {
+                        Student stu1 = new Student();
+                        Student stu = stu1.setDetail();
+                        stu.getDetail(stu);
+                }
+        } 
+
+
+OUTPUT:
+Student  id :23
+Student Name :jayraj
+Student address :Vita
+Student Contact :1234567890
+Student email :jayraj@gmail.com
+School Name :new english school
+School Address :pune
+
+
+
+
+
+
